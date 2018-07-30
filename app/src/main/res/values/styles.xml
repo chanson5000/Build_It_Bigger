@@ -5,4 +5,19 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="JokeInstructions">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:text">@string/instructions</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TellJokeButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">@string/button_text</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
 </resources>
