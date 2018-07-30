@@ -45,6 +45,7 @@ android {
             dimension "tier"
         }
     }
+    sourceSets { free { java.srcDirs = ['src/free/java', 'src/free/java/'] } }
 }
 
 dependencies {
