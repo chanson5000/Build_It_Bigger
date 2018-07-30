@@ -9,11 +9,10 @@ public class JokeProviderUnitTests {
 
     @Test
     public void getRandomChuckNorrisJoke_ShouldNotBeNull() {
-
         JokeProvider jokeProvider = new JokeProvider();
 
         String result = jokeProvider.getRandomChuckNorrisJoke();
-        System.out.println("Result for debugging: " + result);
         Assert.assertTrue(result != null);
+        Assert.assertTrue(!result.equals(""));
     }
 }
