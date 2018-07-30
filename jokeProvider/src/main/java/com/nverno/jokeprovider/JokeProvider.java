@@ -1,47 +1,25 @@
 package com.nverno.jokeprovider;
 
-import com.google.gson.stream.JsonReader;
-
-import java.io.FileReader;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 public class JokeProvider {
 
+    private static List<String> jokesArray = Arrays.asList(
+            "When Chuck Norris claps his hands, the sun turns off.",
+            "Chuck Norris got a standing ovation by simply walking into a paraplegic convention.",
+            "Chuck Norris understands the lyrics to \"Louie Louie.\"",
+            "The following is the complete list of things Chuck Norris cannot do:",
+            "Chuck Norris once Round-House kicked a man so fast, his foot went at the speed of light, traveled back in time and killed the dinosaurs. Meteor? No, Chuck Norris.",
+            "Chuck Norris won the $142,000,000 Texas state PowerBall Lottery with a ticket stub from a Texas Rangers baseball game.",
+            "Chuck Norris once fell into a pit full of rattle snakes. He emerged 10 minutes later while smartly clad in his new vest, belt and boots.",
+            "Chuck Norris can save 15% or more on car insurance WITHOUT switching to Geico... or even buying car insurance."
+    );
+
     public String getRandomChuckNorrisJoke() {
+        Random random = new Random();
 
-        try {
-            List<String> jokesList = new ArrayList<>();
-            Random random = new Random();
-
-            URL url = getClass().getClassLoader().getResource("jokes.json");
-
-            if (url != null) {
-                String path = url.getPath();
-
-                JsonReader jsonReader = new JsonReader(new FileReader(path));
-
-                jsonReader.beginArray();
-
-                while (jsonReader.hasNext()) {
-                    jokesList.add(jsonReader.nextString());
-                }
-
-                jsonReader.endArray();
-                jsonReader.close();
-
-                return jokesList.get(random.nextInt(jokesList.size()));
-            } else {
-                return null;
-            }
-
-        } catch (IOException ex) {
-            System.out.println("Error: " + ex.getMessage());
-            ex.printStackTrace();
-            return null;
-        }
+        return jokesArray.get(random.nextInt(jokesArray.size()));
     }
 }
