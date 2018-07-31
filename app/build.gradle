@@ -71,3 +71,26 @@ dependencies {
 
     testImplementation 'junit:junit:4.12'
 }
+
+task customGradleTask(dependsOn:[':backend:appengineRun',
+                                 ':app:connectedAndroidTest',
+                                 ':backend:appengineStop']) {
+
+    tasks.getByPath("app:") mustRunAfter tasks.getByPath(":backend:appengineRun")
+
+    tasks.getByPath(":backend:appengineStop") mustRunAfter tasks.getByPath(":app:connectedAndroidTest")
+
+    evaluationDependsOn(":backend")
+
+    project(":backend") {
+        appengine {
+            daemon true
+        }
+    }
+}
+
+
+//task customGradleTaskTwo {
+//
+//}
+
