@@ -44,7 +44,9 @@ class JokeEndpointAsyncTask extends AsyncTask<Context, Void, String> {
         try {
             return jokeApiService.tellJoke().execute().getData();
         } catch (IOException e) {
-            return e.getMessage();
+            e.printStackTrace();
+            // Return empty string if joke retrieval failed.
+            return "Error: Chuck Norris stopped us from retrieving a joke!";
         }
     }
 

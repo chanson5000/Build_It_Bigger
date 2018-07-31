@@ -30,7 +30,7 @@ public class GetJokeActivityTest {
                 .perform(click());
 
         onView(withId(R.id.text_joke_string))
-                .check(matches(not(withText(""))));
+                .check(matches(not(withText("Error: Chuck Norris stopped us from retrieving a joke!"))));
     }
 
 }
