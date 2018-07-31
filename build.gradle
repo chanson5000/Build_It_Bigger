@@ -20,3 +20,11 @@ allprojects {
         google()
     }
 }
+
+task testWithEndpoint(dependsOn:[':backend:appengineStart',
+                                 ':app:connectedAndroidTest',
+                                 ':backend:appengineStop']) {
+
+    tasks.getByPath(":app:connectedAndroidTest").finalizedBy tasks.getByPath(":backend:appengineStop")
+    tasks.getByPath(":app:connectedAndroidTest").mustRunAfter tasks.getByPath(":backend:appengineStart")
+}
